@@ -1,16 +1,40 @@
+import HomeScreen from '@/screens/HomeScreen';
+import MapScreen from '@/screens/MapScreen';
+import store from '@/store';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 
-import store from '@/store';
+export type RootStackParamList = {
+  HomeScreen: undefined;
+  MapScreen: undefined;
+  EatsScreen: undefined;
+};
+
+const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-        <Text>Let's build UBER!</Text>
-        <StatusBar style='auto' />
-      </View>
+      <StatusBar
+        style='auto'
+        translucent
+      />
+      <NavigationContainer>
+        <Navigator screenOptions={{ headerShown: false }}>
+          <Screen
+            name='HomeScreen'
+            component={HomeScreen}
+          />
+          <Screen
+            name='MapScreen'
+            component={MapScreen}
+          />
+        </Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }

@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
 interface UberSate {
-  origin: number;
-  destination: number;
-  travelTimeInformation: number;
+  origin: any;
+  destination: any;
+  travelTimeInformation: any;
 }
 
 const initialState: UberSate = {
@@ -17,10 +17,10 @@ const uberSlice = createSlice({
   name: 'uber',
   initialState,
   reducers: {
-    setOrigin: (state, action: PayloadAction<number>) => {
+    setOrigin: (state, action: PayloadAction<any>) => {
       state.origin = action.payload;
     },
-    setDestination: (state, action: PayloadAction<number>) => {
+    setDestination: (state, action: PayloadAction<any>) => {
       state.destination = action.payload;
     },
     setTravelTimeInformation: (state, action: PayloadAction<number>) => {
