@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 
 export type RootStackParamList = {
@@ -19,21 +19,27 @@ const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar
-        style='auto'
-        translucent
-      />
       <NavigationContainer>
-        <Navigator screenOptions={{ headerShown: false }}>
-          <Screen
-            name='HomeScreen'
-            component={HomeScreen}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{ flex: 1 }}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? -64 : 0}
+        >
+          <StatusBar
+            style='auto'
+            translucent
           />
-          <Screen
-            name='MapScreen'
-            component={MapScreen}
-          />
-        </Navigator>
+          <Navigator screenOptions={{ headerShown: false }}>
+            <Screen
+              name='HomeScreen'
+              component={HomeScreen}
+            />
+            <Screen
+              name='MapScreen'
+              component={MapScreen}
+            />
+          </Navigator>
+        </KeyboardAvoidingView>
       </NavigationContainer>
     </Provider>
   );

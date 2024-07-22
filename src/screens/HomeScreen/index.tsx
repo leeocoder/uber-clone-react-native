@@ -1,4 +1,5 @@
 import { RootStackParamList } from '@/../App';
+import NavFavorites from '@/components/NavFavorites';
 import NavOptions from '@/components/NavOptions';
 import { setDestination, setOrigin } from '@/uberSlice';
 import { GOOGLE_MAPS_APIKEY } from '@env';
@@ -63,6 +64,7 @@ const HomeScreen = ({ route }: DetailScreenProps) => {
           />
         </View>
         <NavOptions />
+        <NavFavorites />
       </View>
     </SafeAreaView>
   );
