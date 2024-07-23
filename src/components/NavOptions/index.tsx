@@ -1,11 +1,11 @@
-import React from 'react';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import tw from 'twrnc';
-import AtnDesign from '@expo/vector-icons/AntDesign';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '@/../App';
 import { selectOrigin } from '@/uberSlice';
+import AtnDesign from '@expo/vector-icons/AntDesign';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
+import tw from 'twrnc';
 
 type DataItem = {
   id: string;
